@@ -147,7 +147,7 @@ const Home: React.FC = () => {
             About Us <span className="ml-2">▼</span>
           </a>
           <a href="#" className="hover:underline flex items-center">
-            Contact Us <span class="ml-2">▼</span>
+            Contact Us <span className="ml-2">▼</span>
           </a>
         </nav>
       </footer>
@@ -156,3 +156,4 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+
