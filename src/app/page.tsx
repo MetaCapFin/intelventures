@@ -26,7 +26,6 @@ const Dropdown: React.FC<DropdownProps> = ({ label, menu, dropdownOpen, handleDr
 
 const Home: React.FC = () => {
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
-  const [zoomLevel, setZoomLevel] = useState(1); // Set initial zoom level to 100%
 
   const handleDropdownClick = useCallback((menu: string) => {
     setDropdownOpen((prev) => (prev === menu ? null : menu));
