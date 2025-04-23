@@ -1,0 +1,163 @@
+"use client";
+
+import { useState, useEffect, useCallback, ReactNode, useMemo } from 'react';
+import Image from 'next/image';
+
+interface DropdownProps {
+  label: string;
+  menu: string;
+  dropdownOpen: string | null;
+  handleDropdownClick: (menu: string) => void;
+  children: ReactNode;
+}
+
+const Dropdown: React.FC<DropdownProps> = ({ label, menu, dropdownOpen, handleDropdownClick, children }) => (
+  <div className="relative dropdown">
+    <a href="#" className="hover:underline flex items-center" onClick={() => handleDropdownClick(menu)} aria-expanded={dropdownOpen === menu} aria-controls={`${menu}Menu`} aria-label={`Toggle ${label} menu`}>
+      {label} <span className="ml-2">▼</span>
+    </a>
+    {dropdownOpen === menu && (
+      <div id={`${menu}Menu`} className="dropdown-menu absolute top-full left-0 mt-2 bg-opacity-80 text-white rounded shadow-lg transition-opacity duration-300">
+        {children}
+      </div>
+    )}
+  </div>
+);
+
+const Home: React.FC = () => {
+  const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
+  const [zoomLevel, setZoomLevel] = useState(1); // Set initial zoom level to 100%
+
+  const handleDropdownClick = useCallback((menu: string) => {
+    setDropdownOpen((prev) => (prev === menu ? null : menu));
+  }, []);
+
+  const handleClickOutside = useCallback((event: MouseEvent) => {
+    if (!(event.target as HTMLElement).closest('.dropdown')) {
+      setDropdownOpen(null);
+    }
+  }, []);
+
+  useEffect(() => {
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [handleClickOutside]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--zoom-level', zoomLevel.toString());
+  }, [zoomLevel]);
+
+  const dropdownItems = useMemo(() => (
+    <>
+      <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">Meet the Team</a>
+      <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">What We Do</a>
+    </>
+  ), []);
+
+  return (
+    <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[var(--font-geist-sans)] text-white">
+      <header className="header fixed top-0 left-0 w-full p-4 bg-gradient-to-b from-black via-black to-transparent z-50 flex justify-between items-center">
+        <div className="flex items-center gap-8">
+          <h1 className="text-center">IntelVentures Retail Automation</h1>
+          <nav className="flex gap-4">
+            <Dropdown label="About Us" menu="aboutUs" dropdownOpen={dropdownOpen} handleDropdownClick={handleDropdownClick}>
+              {dropdownItems}
+            </Dropdown>
+            <Dropdown label="Contact Us" menu="contactUs" dropdownOpen={dropdownOpen} handleDropdownClick={handleDropdownClick}>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">Email Us</a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">Schedule a Meeting</a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">Give us a Call</a>
+            </Dropdown>
+            <Dropdown label="Partnerships" menu="partnerships" dropdownOpen={dropdownOpen} handleDropdownClick={handleDropdownClick}>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">Partners</a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">Projects</a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">Become a Partner</a>
+            </Dropdown>
+          </nav>
+        </div>
+        <div className="ml-auto">
+          <Image
+            src="/intelventureslogo.png"
+            alt="Logo"
+            width={100}
+            height={100}
+            priority
+          />
+        </div>
+      </header>
+      <section className="relative flex justify-center items-center w-full p-4 mt-20">
+        <div className="image-container">
+          <Image
+            src="/spacetree.png"
+            alt="Space Tree"
+            width={600}
+            height={400}
+            loading="lazy"
+          />
+          <div className="radial-gradient-overlay"></div>
+        </div>
+      </section>
+      <main className="flex flex-col items-center gap-8">
+        <section className="section-container-transparent flex flex-col items-center gap-4">
+          <h2>About Us</h2>
+          <div className="flex gap-8">
+            <div className="section-container flex flex-col items-start">
+              <h3>Meet the Team</h3>
+              <p>Details about the team...</p>
+            </div>
+            <div className="section-container flex flex-col items-end">
+              <h3>What We Do</h3>
+              <p>Details about what we do...</p>
+            </div>
+          </div>
+        </section>
+        {/* New Container */}
+        <section className="section-container-transparent flex flex-col items-center gap-4">
+          <h2>Contact Us</h2>
+          <div className="flex gap-8">
+            <div className="section-container flex flex-col items-start">
+              <h3>Schedule a Meeting</h3>
+              <p>CALENDLY WIDGET HERE</p>
+            </div>
+            <div className="section-container flex flex-col items-end">
+              <h3>Reach Out</h3>
+              <p>PHONE: XXX XXX XXXX</p>
+              <p>Email: XXXX@XXXX.com</p>
+            </div>
+          </div>
+        </section>
+        <section className="section-container-transparent flex flex-col items-center gap-4">
+          <h2>Partnerships</h2>
+          <div className="flex gap-8">
+            <div className="section-container flex flex-col items-start">
+              <h3>Partners</h3>
+              <p>LIST OF PARTNERS HERE</p>
+            </div>
+            <div className="section-container flex flex-col items-end">
+              <h3>Projects</h3>
+              <p>LIST OF PORJECTS HERE</p>
+            </div>
+            <div className="section-container flex flex-col items-end">
+              <h3>Become a Partner</h3>
+              <p>REGISTRATION FORM HERE</p>
+              </div>
+          </div>
+        </section>
+      </main>
+      <footer className="footer fixed bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black via-black to-transparent z-50 flex justify-between items-center">
+        <nav className="flex gap-4">
+          <a href="#" className="hover:underline flex items-center">
+            About Us <span className="ml-2">▼</span>
+          </a>
+          <a href="#" className="hover:underline flex items-center">
+            Contact Us <span className="ml-2">▼</span>
+          </a>
+        </nav>
+      </footer>
+    </div>
+  );
+};
+
+export default Home;
