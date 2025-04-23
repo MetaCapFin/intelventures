@@ -44,10 +44,6 @@ const Home: React.FC = () => {
     };
   }, [handleClickOutside]);
 
-  useEffect(() => {
-    document.documentElement.style.setProperty('--zoom-level', zoomLevel.toString());
-  }, [zoomLevel]);
-
   const dropdownItems = useMemo(() => (
     <>
       <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">Meet the Team</a>
@@ -151,7 +147,7 @@ const Home: React.FC = () => {
             About Us <span className="ml-2">▼</span>
           </a>
           <a href="#" className="hover:underline flex items-center">
-            Contact Us <span className="ml-2">▼</span>
+            Contact Us <span class="ml-2">▼</span>
           </a>
         </nav>
       </footer>
