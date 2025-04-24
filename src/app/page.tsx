@@ -52,8 +52,8 @@ const Home: React.FC = () => {
   ), []);
 
   return (
-    <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[var(--font-geist-sans)] text-white">
-      <header className="header fixed top-0 left-0 w-full p-4 bg-gradient-to-b from-black via-black to-transparent z-50 flex justify-between items-center">
+    <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-4 pb-10 gap-8 sm:p-10 font-[var(--font-geist-sans)] text-white">
+      <header className="header-container fixed top-0 left-0 w-full p-4 bg-gradient-to-b from-black via-black to-transparent z-50 flex justify-between items-center">
         <div className="flex items-center gap-8">
           <h1 className="text-center">IntelVentures Retail Automation</h1>
           <nav className="flex gap-4">
@@ -72,76 +72,81 @@ const Home: React.FC = () => {
             </Dropdown>
           </nav>
         </div>
-        <div className="ml-auto">
-          <Image
-            src="/intelventureslogo.png"
-            alt="Logo"
-            width={100}
-            height={100}
-            priority
-          />
-        </div>
+        <Image
+          src="/intelventureslogo.png"
+          alt="Logo"
+          width={80}
+          height={80}
+          priority
+          className="ml-auto"
+        />
       </header>
-      <section className="relative flex justify-center items-center w-full p-4 mt-20">
-        <div className="image-container">
-          <Image
-            src="/spacetree.png"
-            alt="Space Tree"
-            width={600}
-            height={400}
-            loading="lazy"
-          />
-          <div className="radial-gradient-overlay"></div>
+      <section className="intro-us-section relative flex justify-center items-center w-full p-4 mt-20">
+        <div className="section-container flex flex-col items-center">
+          <div className="image-container relative">
+            <Image
+              src="/spacetree.png"
+              alt="Space Tree"
+              width={600}
+              height={400}
+              loading="lazy"
+            />
+            <div className="radial-gradient-overlay absolute inset-0"></div>
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
+              <h3 className="font-bold">Connecting Your Business for Peak Performance</h3>
+              <br></br>
+              <p>Integration and optimization for operational and sales processes, sales and communication funnels</p>
+            </div>
+          </div>
         </div>
       </section>
-      <main className="flex flex-col items-center gap-8">
-        <section className="section-container-transparent flex flex-col items-center gap-4">
-          <h2>About Us</h2>
+      <main className="flex flex-col items-center gap-8 pb-40"> {/* Increased bottom padding */}
+        <section className="about-us-section section-container-transparent flex flex-col items-center gap-4">
+        <h2 className="font-bold">About Us</h2>
           <div className="flex gap-8">
-            <div className="section-container flex flex-col items-start">
+            <div className="section-container flex flex-col items-start glowing-border rounded-lg">
               <h3>Meet the Team</h3>
               <p>Details about the team...</p>
             </div>
-            <div className="section-container flex flex-col items-end">
+            <div className="section-container flex flex-col items-end glowing-border rounded-lg">
               <h3>What We Do</h3>
               <p>Details about what we do...</p>
             </div>
           </div>
         </section>
-        {/* New Container */}
-        <section className="section-container-transparent flex flex-col items-center gap-4">
-          <h2>Contact Us</h2>
+        <section className="contact-us-section section-container-transparent flex flex-col items-center gap-4">
+          <h2 className="font-bold">Contact Us</h2>
           <div className="flex gap-8">
-            <div className="section-container flex flex-col items-start">
+          <div className="section-container flex flex-col items-start glowing-border rounded-lg">
               <h3>Schedule a Meeting</h3>
               <p>CALENDLY WIDGET HERE</p>
             </div>
-            <div className="section-container flex flex-col items-end">
+            <div className="section-container flex flex-col items-start glowing-border rounded-lg">
               <h3>Reach Out</h3>
               <p>PHONE: XXX XXX XXXX</p>
               <p>Email: XXXX@XXXX.com</p>
             </div>
           </div>
         </section>
-        <section className="section-container-transparent flex flex-col items-center gap-4">
-          <h2>Partnerships</h2>
+        <section className="partnerships-section section-container-transparent flex flex-col items-center gap-4">
+          <h2 className="font-bold">Partnerships</h2>
           <div className="flex gap-8">
-            <div className="section-container flex flex-col items-start">
+          <div className="section-container flex flex-col items-start glowing-border rounded-lg">
               <h3>Partners</h3>
               <p>LIST OF PARTNERS HERE</p>
             </div>
-            <div className="section-container flex flex-col items-end">
+            <div className="section-container flex flex-col items-start glowing-border rounded-lg">
               <h3>Projects</h3>
-              <p>LIST OF PORJECTS HERE</p>
+              <p>LIST OF PROJECTS HERE</p>
             </div>
-            <div className="section-container flex flex-col items-end">
+            <div className="section-container flex flex-col items-start glowing-border rounded-lg">
               <h3>Become a Partner</h3>
               <p>REGISTRATION FORM HERE</p>
-              </div>
+            </div>
           </div>
         </section>
       </main>
-      <footer className="footer fixed bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black via-black to-transparent z-50 flex justify-between items-center">
+      <footer className="footer-container fixed bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black via-black to-transparent z-50 flex justify-between items-center">
         <nav className="flex gap-4">
           <a href="#" className="hover:underline flex items-center">
             About Us <span className="ml-2">▼</span>
@@ -156,4 +161,3 @@ const Home: React.FC = () => {
 };
 
 export default Home;
-
