@@ -143,9 +143,11 @@ const Home: React.FC = () => {
           <h2 className="font-bold">Contact Us</h2>
           <div className="flex gap-8">
             <div className="schedule-a-meeting-container glowing-border rounded-lg">
-              <h3>Schedule a Meeting</h3>
-              <div className="calendly-inline-widget" data-url="https://calendly.com/intel-ventures/one-on-one-introduction?background_color=000000&text_color=1bd6d6&primary_color=7e2df2" style={{ minWidth: '600px', height: '1000px' }}></div>
-              <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            <div className="w-full max-w-lg mx-auto">
+  <div className="calendly-inline-widget" data-url="https://calendly.com/intel-ventures/one-on-one-introduction?background_color=000000&text_color=1bd6d6&primary_color=7e2df2" style={{ width: '100%', height: '1000px' }}></div>
+</div>
+<script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
             </div>
             <div className="reach-out-container glowing-border rounded-lg">
               <br></br>
@@ -198,3 +200,5 @@ const Home: React.FC = () => {
 };
 
 export default Home;
+
+
