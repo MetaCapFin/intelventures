@@ -249,7 +249,7 @@ body {
   opacity: 0.8;
   font-size: 1.5vw;
   color: var(--foreground);
-  text-align: center; /* Align text to the left */
+  text-align: center;
 }
 
 .schedule-a-meeting-container h3 {
@@ -279,8 +279,8 @@ body {
   opacity: 0.8;
   font-size: 1.5vw;
   color: var(--foreground);
-  text-align: center; /* Align text to the left */
-  }
+  text-align: center;
+}
 
 .reach-out-container h3 {
   font-size: 2vw;
@@ -289,40 +289,12 @@ body {
 
 .reach-out-container p {
   font-size: 1.2vw;
-  }
-
-/* LinkedIn Logo */
-img[src="linkedin.png"] {
-  width: 150px; /* Adjust the width as needed */
-  height: auto; /* Maintain aspect ratio */
-  margin-bottom: 10px; /* Add space below the image */
-  display: block; /* Make the image a block element */
-  margin-left: auto; /* Center the image horizontally */
-  margin-right: auto; /* Center the image horizontally */
 }
 
-
-/* Twitter Logo */
-img[src="twitter.png"] {
-  width: 150px; /* Adjust the width as needed */
-  height: auto; /* Maintain aspect ratio */
-  margin-bottom: 10px; /* Add space below the image */
-  display: block; /* Make the image a block element */
-  margin-left: auto; /* Center the image horizontally */
-  margin-right: auto; /* Center the image horizontally */
-}
-
-/* Instagram Logo */
-img[src="instagram.png"] {
-  width: 150px; /* Adjust the width as needed */
-  height: auto; /* Maintain aspect ratio */
-  margin-bottom: 20px; /* Add space below the image */
-  display: block; /* Make the image a block element */
-  margin-left: auto; /* Center the image horizontally */
-  margin-right: auto; /* Center the image horizontally */
-}
-
-/* Discord Logo */
+/* Social Media Logos */
+img[src="linkedin.png"],
+img[src="twitter.png"],
+img[src="instagram.png"],
 img[src="discord.png"] {
   width: 150px; /* Adjust the width as needed */
   height: auto; /* Maintain aspect ratio */
@@ -331,6 +303,7 @@ img[src="discord.png"] {
   margin-left: auto; /* Center the image horizontally */
   margin-right: auto; /* Center the image horizontally */
 }
+
 
 /* Partnerships Section Styles */
 .partnerships-section {
