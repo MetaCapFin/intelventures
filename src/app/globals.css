@@ -261,7 +261,7 @@ body {
   font-size: 1.2vw;
 }
 
-/* Add this to your CSS file */
+/* Calendly Inline Widget */
 @media (max-width: 600px) {
   .calendly-inline-widget {
     height: 600px; /* Adjust height for mobile */
