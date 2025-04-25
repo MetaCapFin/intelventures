@@ -140,30 +140,25 @@ const Home: React.FC = () => {
           </div>
         </section>
         <section className="contact-us-section section-container-transparent flex flex-col items-center gap-4">
-          <h2 className="font-bold">Contact Us</h2>
-          <div className="flex gap-8">
+          <h2 className="font-bold text-center">Contact Us</h2>
+          <div className="flex flex-col sm:flex-row gap-8">
             <div className="schedule-a-meeting-container glowing-border rounded-lg">
-              <h3>Schedule a Meeting</h3>
-            <div className="w-full max-w-lg mx-auto">
-              <div className="calendly-inline-widget" data-url="https://calendly.com/intel-ventures/one-on-one-introduction?background_color=000000&text_color=1bd6d6&primary_color=7e2df2" style={{ width: '100%', height: '1000px' }}></div>
-            </div>
+              <h3 className="text-center">Schedule a Meeting</h3>
+              <div className="w-full max-w-lg mx-auto">
+                <div className="calendly-inline-widget" data-url="https://calendly.com/intel-ventures/one-on-one-introduction?background_color=000000&text_color=1bd6d6&primary_color=7e2df2" style={{ width: '100%', height: '1000px' }}></div>
+              </div>
               <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
             </div>
             <div className="reach-out-container glowing-border rounded-lg">
-              <br></br>
-              <br></br>
-              <br></br>
-              <h3>Reach Out</h3>
-              <p>PHONE: XXX XXX XXXX</p>
-              <p>Email: XXXX@XXXX.com</p>
-              <br></br>
-              <img src="linkedin.png" alt="LinkedIn Logo" />
-              <br></br>
-              <img src="twitter.png" alt="Twitter Logo" />
-              <br></br>
-              <img src="instagram.png" alt="Instagram Logo" />
-              <br></br>
-              <img src="discord.png" alt="Discord Logo" />
+              <h3 className="text-center">Reach Out</h3>
+              <p className="text-center">PHONE: XXX XXX XXXX</p>
+              <p className="text-center">Email: XXXX@XXXX.com</p>
+              <div className="flex flex-wrap justify-center gap-4 mt-4">
+                <img src="linkedin.png" alt="LinkedIn Logo" className="w-8 h-8" />
+                <img src="twitter.png" alt="Twitter Logo" className="w-8 h-8" />
+                <img src="instagram.png" alt="Instagram Logo" className="w-8 h-8" />
+                <img src="discord.png" alt="Discord Logo" className="w-8 h-8" />
+              </div>
             </div>
           </div>
         </section>
