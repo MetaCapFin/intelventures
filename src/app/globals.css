@@ -261,6 +261,13 @@ body {
   font-size: 1.2vw;
 }
 
+/* Add this to your CSS file */
+@media (max-width: 600px) {
+  .calendly-inline-widget {
+    height: 600px; /* Adjust height for mobile */
+  }
+}
+
 /* Reach Out Container Styles */
 .reach-out-container {
   background: transparent;
@@ -425,4 +432,3 @@ a:focus, .dropdown-menu a:focus {
   outline: 2px solid var(--primary-color);
   outline-offset: 2px;
 }
-
