@@ -13,11 +13,27 @@ interface DropdownProps {
 
 const Dropdown: React.FC<DropdownProps> = ({ label, menu, dropdownOpen, handleDropdownClick, children }) => (
   <div className="relative dropdown">
-    <a href="#" className="hover:underline flex items-center" onClick={() => handleDropdownClick(menu)} aria-expanded={dropdownOpen === menu} aria-controls={`${menu}Menu`} aria-label={`Toggle ${label} menu`}>
+    <a
+      href="#"
+      className="hover:underline flex items-center"
+      onClick={() => handleDropdownClick(menu)}
+      aria-expanded={dropdownOpen === menu}
+      aria-controls={`${menu}Menu`}
+      aria-label={`Toggle ${label} menu`}
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          handleDropdownClick(menu);
+        }
+      }}
+    >
       {label} <span className="ml-2">▼</span>
     </a>
     {dropdownOpen === menu && (
-      <div id={`${menu}Menu`} className="dropdown-menu absolute top-full left-0 mt-2 bg-opacity-80 text-white rounded shadow-lg transition-opacity duration-300">
+      <div
+        id={`${menu}Menu`}
+        className="dropdown-menu absolute top-full left-0 mt-2 bg-gray-800 text-gray-200 rounded shadow-lg transition-opacity duration-300"
+      >
         {children}
       </div>
     )}
@@ -44,12 +60,19 @@ const Home: React.FC = () => {
     };
   }, [handleClickOutside]);
 
-  const dropdownItems = useMemo(() => (
-    <>
-      <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">Meet the Team</a>
-      <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">What We Do</a>
-    </>
-  ), []);
+  const dropdownItems = useMemo(
+    () => (
+      <>
+        <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">
+          Meet the Team
+        </a>
+        <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">
+          What We Do
+        </a>
+      </>
+    ),
+    []
+  );
 
   return (
     <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center min-h-screen p-4 pb-10 gap-8 sm:p-10 font-[var(--font-geist-sans)] text-white">
@@ -61,54 +84,53 @@ const Home: React.FC = () => {
               {dropdownItems}
             </Dropdown>
             <Dropdown label="Contact Us" menu="contactUs" dropdownOpen={dropdownOpen} handleDropdownClick={handleDropdownClick}>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">Email Us</a>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">Schedule a Meeting</a>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">Give us a Call</a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">
+                Email Us
+              </a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">
+                Schedule a Meeting
+              </a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">
+                Give us a Call
+              </a>
             </Dropdown>
             <Dropdown label="Partnerships" menu="partnerships" dropdownOpen={dropdownOpen} handleDropdownClick={handleDropdownClick}>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">Partners</a>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">Projects</a>
-              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">Become a Partner</a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">
+                Partners
+              </a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">
+                Projects
+              </a>
+              <a href="#" className="block px-4 py-2 hover:bg-gray-200 hover:bg-opacity-50">
+                Become a Partner
+              </a>
             </Dropdown>
           </nav>
         </div>
-        <Image
-          src="/intelventureslogo.png"
-          alt="Logo"
-          width={80}
-          height={80}
-          priority
-          className="ml-auto"
-        />
+        <Image src="/intelventureslogo.png" alt="Logo" width={80} height={80} priority className="ml-auto" />
       </header>
       <section className="intro-us-section relative flex justify-center items-center w-full p-4 mt-20">
         <div className="section-container flex flex-col items-center">
           <div className="image-container relative">
-            <Image
-              src="/spacetree.png"
-              alt="Space Tree"
-              width={600}
-              height={400}
-              loading="lazy"
-            />
+            <Image src="/spacetree.png" alt="Space Tree" width={600} height={400} loading="lazy" />
             <div className="radial-gradient-overlay absolute inset-0"></div>
             <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white">
               <h3 className="font-bold">Connecting Your Business for Peak Performance</h3>
-              <br></br>
+              <br />
               <p>Integration and optimization for operational and sales processes, sales and communication funnels</p>
             </div>
           </div>
         </div>
       </section>
-      <main className="flex flex-col items-center gap-8 pb-40"> {/* Increased bottom padding */}
+      <main className="flex flex-col items-center gap-8 pb-40">
         <section className="about-us-section section-container-transparent flex flex-col items-center gap-4">
-        <h2 className="font-bold">About Us</h2>
+          <h2 className="font-bold">About Us</h2>
           <div className="flex gap-8">
-            <div className="section-container flex flex-col items-start glowing-border rounded-lg">
+            <div className="meet-the-team-container glowing-border rounded-1g">
               <h3>Meet the Team</h3>
               <p>Details about the team...</p>
             </div>
-            <div className="section-container flex flex-col items-end glowing-border rounded-lg">
+            <div className="what-we-do-container glowing-border rounded-lg">
               <h3>What We Do</h3>
               <p>Details about what we do...</p>
             </div>
@@ -117,29 +139,41 @@ const Home: React.FC = () => {
         <section className="contact-us-section section-container-transparent flex flex-col items-center gap-4">
           <h2 className="font-bold">Contact Us</h2>
           <div className="flex gap-8">
-          <div className="section-container flex flex-col items-start glowing-border rounded-lg">
+            <div className="schedule-a-meeting-container glowing-border rounded-lg">
               <h3>Schedule a Meeting</h3>
-              <p>CALENDLY WIDGET HERE</p>
+              <div className="calendly-inline-widget" data-url="https://calendly.com/intel-ventures/one-on-one-introduction?background_color=000000&text_color=1bd6d6&primary_color=7e2df2" style={{ minWidth: '600px', height: '1000px' }}></div>
+              <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
             </div>
-            <div className="section-container flex flex-col items-start glowing-border rounded-lg">
+            <div className="reach-out-container glowing-border rounded-lg">
+              <br></br>
+              <br></br>
+              <br></br>
               <h3>Reach Out</h3>
               <p>PHONE: XXX XXX XXXX</p>
               <p>Email: XXXX@XXXX.com</p>
+              <br></br>
+              <img src="linkedin.png" alt="LinkedIn Logo" />
+              <br></br>
+              <img src="twitter.png" alt="Twitter Logo" />
+              <br></br>
+              <img src="instagram.png" alt="Instagram Logo" />
+              <br></br>
+              <img src="discord.png" alt="Discord Logo" />
             </div>
           </div>
         </section>
         <section className="partnerships-section section-container-transparent flex flex-col items-center gap-4">
           <h2 className="font-bold">Partnerships</h2>
           <div className="flex gap-8">
-          <div className="section-container flex flex-col items-start glowing-border rounded-lg">
+            <div className="partners-container glowing-border rounded-lg">
               <h3>Partners</h3>
               <p>LIST OF PARTNERS HERE</p>
             </div>
-            <div className="section-container flex flex-col items-start glowing-border rounded-lg">
+            <div className="projects-container glowing-border rounded-lg">
               <h3>Projects</h3>
               <p>LIST OF PROJECTS HERE</p>
             </div>
-            <div className="section-container flex flex-col items-start glowing-border rounded-lg">
+            <div className="become-a-partner-container glowing-border rounded-lg">
               <h3>Become a Partner</h3>
               <p>REGISTRATION FORM HERE</p>
             </div>
