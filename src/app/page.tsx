@@ -1,5 +1,8 @@
 "use client";
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</meta>
+
 import { useState, useEffect, useCallback, ReactNode, useMemo } from 'react';
 import Image from 'next/image';
 
